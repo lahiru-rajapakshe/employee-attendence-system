@@ -2,12 +2,20 @@ package controller;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class SplashScreenFormController {
 
@@ -48,3 +56,29 @@ public class SplashScreenFormController {
         }).start();
     }
 }
+
+
+    private void loadImportDBForm() {
+        try {
+            Stage stage = new Stage();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/ImportDBForm.fxml"));
+            AnchorPane root = fxmlLoader.load();
+            ImportDBFormController controller = fxmlLoader.getController();
+            controller.initFileProperty(fileProperty);
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setTitle("Student Attendance System: First Time Boot");
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(lblStatus.getScene().getWindow());
+            stage.centerOnScreen();
+            stage.setOnCloseRequest(event -> {
+                event.consume();
+            });
+            stage.showAndWait();
+
+
+    }
