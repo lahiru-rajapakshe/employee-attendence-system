@@ -70,7 +70,7 @@ public class SplashScreenFormController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.sizeToScene();
-            stage.setTitle("Student Attendance System: First Time Boot");
+            stage.setTitle("Employee Attendance System: First Time Boot");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(lblStatus.getScene().getWindow());
@@ -80,5 +80,20 @@ public class SplashScreenFormController {
             });
             stage.showAndWait();
 
+            if (fileProperty.getValue() == null) {
+                lblStatus.setText("Creating a new DB..");
 
+                new Thread(() -> {
+                    try {
+                        sleep(500);
+                        Platform.runLater(() -> lblStatus.setText("Loading database script.."));
+
+                        InputStream is = this.getClass().getResourceAsStream("/assets/db-script.sql");
+                        byte[] buffer = new byte[is.available()];
+                        is.read(buffer);
+                        String script = new String(buffer);
+                        sleep(500);
+
+
+        }
     }
