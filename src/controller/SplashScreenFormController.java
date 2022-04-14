@@ -78,58 +78,7 @@ public class SplashScreenFormController {
             });
             stage.showAndWait();
 
-            if (fileProperty.getValue() == null) {
-                lblStatus.setText("Creating a new DB..");
 
-                new Thread(() -> {
-                    try {
-//                        sleep(500);
-                        Platform.runLater(() -> lblStatus.setText("Loading database script.."));
-
-                        InputStream is = this.getClass().getResourceAsStream("/assets/db-script.sql");
-                        byte[] buffer = new byte[is.available()];
-                        is.read(buffer);
-                        String script = new String(buffer);
-//                        sleep(500);
-
-                        Connection connection = DriverManager.
-                                getConnection("jdbc:mysql://localhost:3306?allowMultiQueries=true", "root", "mysql");
-                        Platform.runLater(() -> lblStatus.setText("Execute database script.."));
-                        Statement stm = connection.createStatement();
-                        stm.execute(script);
-                        connection.close();
-//                        sleep(100);
-
-                        Platform.runLater(() -> lblStatus.setText("Obtaining a new DB Connection.."));
-                        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeMSys", "root", "mysql");
-//                        sleep(100);
-
-                        /* Storing the database connection as a singleton instance */
-//                        DBConnection.getInstance().init(connection);
-
-                        /* Let's redirect to Create Admin Form */
-                        Platform.runLater(() -> {
-                            lblStatus.setText("Setting up the UI..");
-//                            sleep(100);
-
-//                            loadCreateAdminForm();
-                        });
-                    } catch (IOException | SQLException e) {
-                        if (e instanceof SQLException){
-//                            dropDatabase();
-                        }
-                        //   shutdownApp(e);
-                    }
-                }).start();
-            } else {
-                /* Todo: Restore the backup and handle exceptions and errors */
-                System.out.println("Restoring...!");
-//                loadLoginForm(connection);
-            }
-        } catch (IOException e) {
-//            shutdownApp(e);
-        }
-    }
 }
 
 
