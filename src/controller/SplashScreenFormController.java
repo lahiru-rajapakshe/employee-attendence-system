@@ -55,8 +55,6 @@ public class SplashScreenFormController {
 
         }).start();
     }
-}
-
 
     private void loadImportDBForm() {
         try {
@@ -64,8 +62,8 @@ public class SplashScreenFormController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/ImportDBForm.fxml"));
             AnchorPane root = fxmlLoader.load();
-            ImportDBFormController controller = fxmlLoader.getController();
-            controller.initFileProperty(fileProperty);
+//            ImportDBFormController controller = fxmlLoader.getController();
+//            controller.initFileProperty(fileProperty);
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -85,14 +83,14 @@ public class SplashScreenFormController {
 
                 new Thread(() -> {
                     try {
-                        sleep(500);
+//                        sleep(500);
                         Platform.runLater(() -> lblStatus.setText("Loading database script.."));
 
                         InputStream is = this.getClass().getResourceAsStream("/assets/db-script.sql");
                         byte[] buffer = new byte[is.available()];
                         is.read(buffer);
                         String script = new String(buffer);
-                        sleep(500);
+//                        sleep(500);
 
                         Connection connection = DriverManager.
                                 getConnection("jdbc:mysql://localhost:3306?allowMultiQueries=true", "root", "mysql");
@@ -100,27 +98,27 @@ public class SplashScreenFormController {
                         Statement stm = connection.createStatement();
                         stm.execute(script);
                         connection.close();
-                        sleep(100);
+//                        sleep(100);
 
                         Platform.runLater(() -> lblStatus.setText("Obtaining a new DB Connection.."));
                         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeMSys", "root", "mysql");
-                        sleep(100);
+//                        sleep(100);
 
                         /* Storing the database connection as a singleton instance */
-                        DBConnection.getInstance().init(connection);
+//                        DBConnection.getInstance().init(connection);
 
                         /* Let's redirect to Create Admin Form */
                         Platform.runLater(() -> {
                             lblStatus.setText("Setting up the UI..");
-                            sleep(100);
+//                            sleep(100);
 
-                            loadCreateAdminForm();
+//                            loadCreateAdminForm();
                         });
                     } catch (IOException | SQLException e) {
                         if (e instanceof SQLException){
-                            dropDatabase();
+//                            dropDatabase();
                         }
-                        shutdownApp(e);
+                        //   shutdownApp(e);
                     }
                 }).start();
             } else {
@@ -129,6 +127,9 @@ public class SplashScreenFormController {
 //                loadLoginForm(connection);
             }
         } catch (IOException e) {
-            shutdownApp(e);
+//            shutdownApp(e);
         }
     }
+}
+
+
