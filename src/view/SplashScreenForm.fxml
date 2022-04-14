@@ -1,76 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="416.0" prefWidth="729.0" style="-fx-background-color: rgba(0,0,0,0); -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SplashScreenFormController">
+<AnchorPane fx:id="root" prefHeight="592.0" prefWidth="858.0" style="-fx-background-color: #ebf3f9;" stylesheets="@style/HomeFormStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserHomeFormController">
     <children>
-        <AnchorPane layoutX="346.0" layoutY="-1.0" prefHeight="416.0" prefWidth="383.0" />
-        <AnchorPane layoutX="-2.0" layoutY="-1.0" prefHeight="416.0" prefWidth="349.0" style="-fx-background-color: #23a29c;">
+        <Label alignment="CENTER" layoutY="556.0" prefHeight="14.0" prefWidth="309.0" text="Copyright © 2022 Lahiru Rajapakshe. All Rights Reserved." textFill="#1e1e1e" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="476.0">
+            <font>
+                <Font name="Ubuntu" size="11.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnViewReports" accessibleText="Click to view attendance reports" contentDisplay="TOP" graphicTextGap="10.0" layoutX="44.0" layoutY="296.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnViewReports_OnAction" prefHeight="103.0" prefWidth="261.0" style="-fx-background-color: white;" text="[F2] View Reports">
+            <graphic>
+                <ImageView fitHeight="50.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-view-headline-48.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Ubuntu" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button fx:id="btnUserProfile" accessibleText="Click to manage the user profile" contentDisplay="TOP" graphicTextGap="10.0" layoutX="44.0" layoutY="416.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUserProfile_OnAction" prefHeight="103.0" prefWidth="261.0" style="-fx-background-color: white;" text="[F3] User Profile">
+            <graphic>
+                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-test-account-48.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Ubuntu" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button fx:id="btnSignOut" accessibleText="Click to sign out" contentDisplay="TOP" graphicTextGap="10.0" layoutX="318.0" layoutY="416.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSignOut_OnAction" prefHeight="103.0" prefWidth="244.0" style="-fx-background-color: white;" text="[F12] Sign Out">
+            <graphic>
+                <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@assets/icons8-logout-48.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Ubuntu" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <AnchorPane fx:id="mainlbl" layoutX="17.0" layoutY="97.0" prefHeight="154.0" prefWidth="571.0" style="-fx-background-color: linear-gradient(to right, #33ccff 0%,     #087f9c 100%);">
             <children>
-                <Label layoutX="37.0" layoutY="25.0" text="Employee" textFill="WHITE">
+                <Label fx:id="lblGreeting" alignment="CENTER" layoutX="-100.0" layoutY="23.0" prefHeight="21.0" prefWidth="335.0" text="Hello Lahiru !" textFill="WHITE" AnchorPane.leftAnchor="-100.0" AnchorPane.rightAnchor="280.0">
                     <font>
-                        <Font size="36.0" />
+                        <Font name="Ubuntu Medium" size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="37.0" layoutY="69.0" text="Attendance" textFill="WHITE">
+                <Label fx:id="time" layoutX="335.0" layoutY="23.0" prefHeight="77.0" prefWidth="185.0" textFill="WHITE">
                     <font>
-                        <Font size="36.0" />
+                        <Font name="Ubuntu Thin" size="64.0" />
                     </font>
                 </Label>
-                <Label layoutX="37.0" layoutY="113.0" text="System" textFill="WHITE">
+                <Label fx:id="lblHover" alignment="CENTER" layoutX="-55.0" layoutY="124.0" prefHeight="16.0" prefWidth="315.0" text="Select an option to continue" textFill="WHITE" AnchorPane.leftAnchor="-55.0" AnchorPane.rightAnchor="260.0">
                     <font>
-                        <Font size="36.0" />
+                        <Font name="Ubuntu" size="14.0" />
                     </font>
                 </Label>
-                <Separator layoutX="10.0" layoutY="26.0" orientation="VERTICAL" prefHeight="219.0" prefWidth="8.0" />
-                <Label layoutX="32.0" layoutY="200.0" text="Wickrama Hardware Stores PVT (LTD)" textFill="#e1e1e1" />
-                <Label layoutX="32.0" layoutY="216.0" text="Embilipitiyta" textFill="#e1e1e1" />
-                <Label layoutX="155.0" layoutY="157.0" text="Version 1.0.0 " textFill="#fcfcfc">
+                <Label alignment="CENTER" layoutX="14.0" layoutY="91.0" prefHeight="19.0" prefWidth="198.0" text="Next update avaliable: Click to update" textFill="#ebeaea">
                     <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-                <JFXButton buttonType="RAISED" layoutX="30.0" layoutY="268.0" style="-fx-background-color: #276460;" text="Legal Notices" textFill="#ebebeb" />
-                <JFXButton buttonType="RAISED" layoutX="134.0" layoutY="268.0" style="-fx-background-color: #a8d6d3;" text="Credits" />
-                <Label layoutX="21.0" layoutY="312.0" text="Copyright (c) 2022 Lahiru Rajapakshe." textFill="#fcf3f3">
-                    <font>
-                        <Font size="11.0" />
-                    </font>
-                </Label>
-                <Label layoutX="22.0" layoutY="326.0" text=" All Rights Recieved." textFill="#f8f8f8">
-                    <font>
-                        <Font size="10.0" />
+                        <Font name="Ubuntu" size="11.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="ancTest" layoutX="345.0" prefHeight="416.0" prefWidth="423.0" style="-fx-background-color: white;">
+        <Label layoutX="32.0" layoutY="63.0" text="Dashboard">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <AnchorPane fx:id="dateAnc" layoutX="615.0" layoutY="97.0" prefHeight="154.0" prefWidth="229.0" style="-fx-background-color: white;">
             <children>
-                <Label layoutX="13.0" layoutY="322.0" text="Loading..">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lblStatus" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="354.0" prefHeight="16.0" prefWidth="247.0" text="Initializing" />
-                <JFXProgressBar layoutX="13.0" layoutY="381.0" prefHeight="3.0" prefWidth="398.0" />
-            <ImageView fitHeight="332.0" fitWidth="413.0" layoutX="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/Attendance-Management.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="87.0" fitWidth="135.0" layoutX="301.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/attendance-management-main-slider.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="148.0" fitWidth="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/h43dK.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </children></AnchorPane>
+        <AnchorPane layoutY="576.0" prefHeight="16.0" prefWidth="862.0" style="-fx-background-color: #565a5b;" />
+        <AnchorPane layoutX="-3.0" layoutY="-3.0" prefHeight="55.0" prefWidth="865.0" style="-fx-background-color: white;">
+            <children>
+                <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="725.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-minimize-window-48.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="28.0" fitWidth="36.0" layoutX="771.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-close-50.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="808.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-test-account-48.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="btnHomeClose" layoutX="762.0" layoutY="11.0" onAction="#btnHomeClose_OnAction" prefHeight="35.0" prefWidth="36.0" text=".">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-admin-settings-male-48.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="btnMinimize" layoutX="716.0" layoutY="11.0" onAction="#btnMinimize_Onaction" prefHeight="35.0" prefWidth="36.0" text=".">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
             </children>
         </AnchorPane>
+        <Button accessibleText="Click to record a new student attendance" contentDisplay="TOP" graphicTextGap="10.0" layoutX="615.0" layoutY="296.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="227.0" prefWidth="229.0" style="-fx-background-color: white;" text="New Employee +">
+            <graphic>
+                <ImageView fitHeight="132.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/cc.jpg" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Ubuntu" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button fx:id="btnRecordAttendance" accessibleText="Click to record a new student attendance" contentDisplay="TOP" graphicTextGap="10.0" layoutX="318.0" layoutY="296.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRecordAttendance_OnAction" prefHeight="103.0" prefWidth="244.0" style="-fx-background-color: white;" text="[F1] Record Attendance">
+            <graphic>
+                <ImageView fitHeight="55.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-event-accepted-tentatively-48.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Ubuntu" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <TextField layoutX="615.0" layoutY="56.0" prefHeight="35.0" prefWidth="229.0" promptText="Search" />
+        <Label layoutX="32.0" layoutY="268.0" text="Your actions">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>
