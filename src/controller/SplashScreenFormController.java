@@ -63,8 +63,8 @@ public class SplashScreenFormController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/ImportDBForm.fxml"));
             AnchorPane root = fxmlLoader.load();
-            ImportDBFormController controller = fxmlLoader.getController();
-            controller.initFileProperty(fileProperty);
+       //     ImportDBFormController controller = fxmlLoader.getController();
+//            controller.initFileProperty(fileProperty);
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -106,7 +106,7 @@ public class SplashScreenFormController {
                         sleep(100);
 
                         /* Storing the database connection as a singleton instance */
-                        DBConnection.getInstance().init(connection);
+                 //       DBConnection.getInstance().init(connection);
 
                         /* Let's redirect to Create Admin Form */
                         Platform.runLater(() -> {
@@ -154,7 +154,7 @@ public class SplashScreenFormController {
 
     private void loadLoginForm(Connection connection) {
         /* Let's store the connection first */
-        DBConnection.getInstance().init(connection);
+       // DBConnection.getInstance().init(connection);
 
         /* Let's redirect to log in form */
         try {
