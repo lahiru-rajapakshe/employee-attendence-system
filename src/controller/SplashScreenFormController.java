@@ -203,6 +203,14 @@ public class SplashScreenFormController {
         System.exit(1);
     }
 
+
+    private void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
