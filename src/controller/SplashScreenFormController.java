@@ -130,6 +130,27 @@ public class SplashScreenFormController {
 //            shutdownApp(e);
         }
     }
+
+
+    private void loadCreateAdminForm() {
+        try {
+            Stage stage = new Stage();
+            AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/CreateAdminForm.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Student Attendance System: Create Admin");
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.sizeToScene();
+           // stage.setOnCloseRequest((e)->dropDatabase());
+            stage.show();
+
+            /* Let's close the splash screen eventually */
+            ((Stage) (lblStatus.getScene().getWindow())).close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
