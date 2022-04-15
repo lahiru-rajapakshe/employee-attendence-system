@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBConnection;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SplashScreenFormController {
-
     public Label lblStatus;
     private final SimpleObjectProperty<File> fileProperty = new SimpleObjectProperty<>();
 
@@ -33,24 +33,24 @@ public class SplashScreenFormController {
         new Thread(() -> {
 
             try {
-               // sleep(800);
+                sleep(800);
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeMSys", "root", "mysql");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dep8_student_attendance", "root", "mysql");
 
                 Platform.runLater(() -> lblStatus.setText("Setting up the UI.."));
-             //   sleep(800);
+                sleep(800);
 
                 Platform.runLater(() -> {
-                //    loadLoginForm(connection);
+                    loadLoginForm(connection);
                 });
 
             } catch (SQLException | ClassNotFoundException e) {
 
                 /* Let's find out whether the DB exists or not */
                 if (e instanceof SQLException && ((SQLException) e).getSQLState().equals("42000")) {
-              //      Platform.runLater(this::loadImportDBForm);
+                    Platform.runLater(this::loadImportDBForm);
                 } else {
-             //       shutdownApp(e);
+                    shutdownApp(e);
                 }
             }
 
@@ -63,13 +63,13 @@ public class SplashScreenFormController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/ImportDBForm.fxml"));
             AnchorPane root = fxmlLoader.load();
-//            ImportDBFormController controller = fxmlLoader.getController();
-//            controller.initFileProperty(fileProperty);
+            ImportDBFormController controller = fxmlLoader.getController();
+            controller.initFileProperty(fileProperty);
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.sizeToScene();
-            stage.setTitle("Employee Attendance System: First Time Boot");
+            stage.setTitle("Student Attendance System: First Time Boot");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(lblStatus.getScene().getWindow());
@@ -84,14 +84,14 @@ public class SplashScreenFormController {
 
                 new Thread(() -> {
                     try {
-//                        sleep(500);
+                        sleep(500);
                         Platform.runLater(() -> lblStatus.setText("Loading database script.."));
 
                         InputStream is = this.getClass().getResourceAsStream("/assets/db-script.sql");
                         byte[] buffer = new byte[is.available()];
                         is.read(buffer);
                         String script = new String(buffer);
-//                        sleep(500);
+                        sleep(500);
 
                         Connection connection = DriverManager.
                                 getConnection("jdbc:mysql://localhost:3306?allowMultiQueries=true", "root", "mysql");
@@ -99,27 +99,27 @@ public class SplashScreenFormController {
                         Statement stm = connection.createStatement();
                         stm.execute(script);
                         connection.close();
-//                        sleep(100);
+                        sleep(100);
 
                         Platform.runLater(() -> lblStatus.setText("Obtaining a new DB Connection.."));
-                        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeMSys", "root", "mysql");
-//                        sleep(100);
+                        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dep8_student_attendance", "root", "mysql");
+                        sleep(100);
 
                         /* Storing the database connection as a singleton instance */
-//                        DBConnection.getInstance().init(connection);
+                        DBConnection.getInstance().init(connection);
 
                         /* Let's redirect to Create Admin Form */
                         Platform.runLater(() -> {
                             lblStatus.setText("Setting up the UI..");
-//                            sleep(100);
+                            sleep(100);
 
-//                            loadCreateAdminForm();
+                            loadCreateAdminForm();
                         });
                     } catch (IOException | SQLException e) {
                         if (e instanceof SQLException){
-//                            dropDatabase();
+                            dropDatabase();
                         }
-                        //   shutdownApp(e);
+                        shutdownApp(e);
                     }
                 }).start();
             } else {
@@ -128,10 +128,9 @@ public class SplashScreenFormController {
 //                loadLoginForm(connection);
             }
         } catch (IOException e) {
-//            shutdownApp(e);
+            shutdownApp(e);
         }
     }
-
 
     private void loadCreateAdminForm() {
         try {
@@ -143,7 +142,7 @@ public class SplashScreenFormController {
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.sizeToScene();
-           // stage.setOnCloseRequest((e)->dropDatabase());
+            stage.setOnCloseRequest((e)->dropDatabase());
             stage.show();
 
             /* Let's close the splash screen eventually */
@@ -155,7 +154,7 @@ public class SplashScreenFormController {
 
     private void loadLoginForm(Connection connection) {
         /* Let's store the connection first */
-     //   DBConnection.getInstance().init(connection);
+        DBConnection.getInstance().init(connection);
 
         /* Let's redirect to log in form */
         try {
@@ -187,22 +186,20 @@ public class SplashScreenFormController {
             stm.execute("DROP DATABASE IF EXISTS dep8_student_attendance");
             connection.close();
         } catch (SQLException e) {
-          //  shutdownApp(e);
+            shutdownApp(e);
         }
     }
-
 
     private void shutdownApp(Throwable t) {
         Platform.runLater(() -> lblStatus.setText("Failed to initialize the app"));
 
-       // sleep(1200);
+        sleep(1200);
 
         if (t != null)
             t.printStackTrace();
 
         System.exit(1);
     }
-
 
     private void sleep(long millis) {
         try {
@@ -212,5 +209,3 @@ public class SplashScreenFormController {
         }
     }
 }
-
-
