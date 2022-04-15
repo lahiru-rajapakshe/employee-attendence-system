@@ -155,7 +155,7 @@ public class SplashScreenFormController {
 
     private void loadLoginForm(Connection connection) {
         /* Let's store the connection first */
-        DBConnection.getInstance().init(connection);
+     //   DBConnection.getInstance().init(connection);
 
         /* Let's redirect to log in form */
         try {
@@ -179,6 +179,18 @@ public class SplashScreenFormController {
             e.printStackTrace();
         }
     }
+
+    private void dropDatabase(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "mysql");
+            Statement stm = connection.createStatement();
+            stm.execute("DROP DATABASE IF EXISTS dep8_student_attendance");
+            connection.close();
+        } catch (SQLException e) {
+          //  shutdownApp(e);
+        }
+    }
+
 }
 
 
