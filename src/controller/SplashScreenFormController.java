@@ -191,6 +191,13 @@ public class SplashScreenFormController {
         }
     }
 
+
+    private void shutdownApp(Throwable t) {
+        Platform.runLater(() -> lblStatus.setText("Failed to initialize the app"));
+
+
+    }
+
 }
 
 
