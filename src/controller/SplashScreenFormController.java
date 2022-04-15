@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -148,6 +149,33 @@ public class SplashScreenFormController {
             /* Let's close the splash screen eventually */
             ((Stage) (lblStatus.getScene().getWindow())).close();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadLoginForm(Connection connection) {
+        /* Let's store the connection first */
+        DBConnection.getInstance().init(connection);
+
+        /* Let's redirect to log in form */
+        try {
+            Stage stage = new Stage();
+            AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+//            root.setStyle("-fx-background-radius: 5em;");
+//            stage.style("hover:-fx-background-color: #101010");
+            stage.setTitle("Student Attendance System: Log In");
+            scene.getStylesheets().add("view/style/loginStyles.css");
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.sizeToScene();
+            stage.show();
+
+            /* Let's close the splash screen eventually */
+            ((Stage) (lblStatus.getScene().getWindow())).close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
