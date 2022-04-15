@@ -165,6 +165,13 @@ public class SplashScreenFormController {
             stage.setScene(scene);
 //            root.setStyle("-fx-background-radius: 5em;");
 //            stage.style("hover:-fx-background-color: #101010");
+            stage.setTitle("Student Attendance System: Log In");
+            scene.getStylesheets().add("view/style/loginStyles.css");
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.sizeToScene();
+            stage.show();
 
             /* Let's close the splash screen eventually */
             ((Stage) (lblStatus.getScene().getWindow())).close();
