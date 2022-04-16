@@ -25,6 +25,7 @@ public class LoginFormController {
     public JFXButton btnClose;
 
     public void btnClose_OnAction(ActionEvent event) {
+        Platform.exit();
     }
 
     public void btnSignIn_OnAction(ActionEvent event) {
