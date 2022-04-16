@@ -35,7 +35,7 @@ public class SplashScreenFormController {
             try {
                 sleep(800);
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dep8_student_attendance", "root", "mysql");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/easDB", "root", "mysql");
 
                 Platform.runLater(() -> lblStatus.setText("Setting up the UI.."));
                 sleep(800);
@@ -102,7 +102,7 @@ public class SplashScreenFormController {
                         sleep(100);
 
                         Platform.runLater(() -> lblStatus.setText("Obtaining a new DB Connection.."));
-                        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dep8_student_attendance", "root", "mysql");
+                        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/easDB", "root", "mysql");
                         sleep(100);
 
                         /* Storing the database connection as a singleton instance */
@@ -183,7 +183,7 @@ public class SplashScreenFormController {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "mysql");
             Statement stm = connection.createStatement();
-            stm.execute("DROP DATABASE IF EXISTS dep8_student_attendance");
+            stm.execute("DROP DATABASE IF EXISTS easDB");
             connection.close();
         } catch (SQLException e) {
             shutdownApp(e);
