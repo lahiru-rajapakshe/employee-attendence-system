@@ -68,6 +68,15 @@ public class LoginFormController {
                     primaryStage.centerOnScreen();
                 });
             }
+            else{
+                new RJAlert(Alert.AlertType.ERROR, "Invalid username or password", "Invalid credentials").show();
+                txtUserName.requestFocus();
+                txtUserName.selectAll();
+            }
+        } catch (Exception e) {
+            new RJAlert(Alert.AlertType.WARNING, "Something went wrong, please try again", "Oops..!", "Failure").show();
+            e.printStackTrace();
+        }
 
     }
 }
