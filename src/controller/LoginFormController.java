@@ -30,7 +30,7 @@ public class LoginFormController {
 
     public void btnSignIn_OnAction(ActionEvent event) {
         if (!isValidated()){
-            new DepAlert(Alert.AlertType.ERROR, "Invalid username or password", "Invalid credentials").show();
+            new RJAlert(Alert.AlertType.ERROR, "Invalid username or password", "Invalid credentials").show();
 
 
 
