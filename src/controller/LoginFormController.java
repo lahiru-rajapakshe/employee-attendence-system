@@ -79,4 +79,12 @@ public class LoginFormController {
         }
 
     }
+
+
+    private boolean isValidated() {
+        String username = txtUserName.getText().trim();
+        String password = txtPassword.getText().trim();
+
+        return !(username.length() < 4 || !username.matches("[A-Za-z0-9]+") || password.length() < 4);
+    }
 }
