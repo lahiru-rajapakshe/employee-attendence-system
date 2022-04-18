@@ -22,5 +22,10 @@ public class DBConnection {
         return (dbConnection == null)? (dbConnection = new DBConnection()): dbConnection;
     }
 
-
+    public Connection getConnection(){
+        if (connection == null){
+            throw new RuntimeException("Init a connection first");
+        }
+        return connection;
+    }
 }
