@@ -1,10 +1,17 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import security.SecurityContextHolder;
+
+import java.io.IOException;
 
 public class UserHomeFormController {
     public Button btnRecordAttendance;
@@ -58,5 +65,22 @@ public class UserHomeFormController {
         lblHover.setText(button.getAccessibleText());
     }
 
+
+    public void btnRecordAttendance_OnAction(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/RecordAttendanceForm.fxml"));
+        Scene attendanceScene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Student Attendance System: Record Attendance");
+        stage.setScene(attendanceScene);
+        stage.setResizable(false);
+        stage.initOwner(btnRecordAttendance.getScene().getWindow());
+        stage.show();
+
+        Platform.runLater(()->{
+            stage.sizeToScene();
+            stage.centerOnScreen();
+        });
+
+    }
 
 }
