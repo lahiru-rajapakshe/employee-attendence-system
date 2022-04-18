@@ -1,6 +1,9 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import security.SecurityContextHolder;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class UserHomeFormController {
     public Button btnRecordAttendance;
@@ -99,6 +104,23 @@ public class UserHomeFormController {
         });
 
         ((Stage)(btnSignOut.getScene().getWindow())).close();
+    }
+
+    public void btnUserProfile_OnAction(ActionEvent event) {
+
+    }
+
+
+    public void btnViewReports_OnAction(ActionEvent event) {
+
+    }
+
+    public void showdate(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), (event -> {
+            time.setText(String.format(" %1$tH:%1$tM", new Date()));
+        })));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
 }
