@@ -63,7 +63,7 @@ public class UserHomeFormController {
             }
         });
 
-      //  showdate();
+       showdate();
     }
 
     private void displayHoveringText(Button button){
