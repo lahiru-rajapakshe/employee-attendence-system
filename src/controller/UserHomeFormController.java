@@ -123,4 +123,8 @@ public class UserHomeFormController {
         timeline.play();
     }
 
+    public void btnHomeClose_OnAction(ActionEvent event) {
+        Platform.exit();
+    }
+
 }
