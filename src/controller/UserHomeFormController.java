@@ -127,4 +127,9 @@ public class UserHomeFormController {
         Platform.exit();
     }
 
+    public void btnMinimize_Onaction(ActionEvent event) {
+        Stage obj = (Stage) dateAnc.getScene().getWindow();
+        obj.setIconified(true);
+    }
+
 }
