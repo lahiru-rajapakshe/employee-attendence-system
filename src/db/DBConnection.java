@@ -18,5 +18,9 @@ public class DBConnection {
         }
     }
 
+    public static DBConnection getInstance(){
+        return (dbConnection == null)? (dbConnection = new DBConnection()): dbConnection;
+    }
+
 
 }
