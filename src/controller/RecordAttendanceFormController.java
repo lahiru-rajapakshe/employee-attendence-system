@@ -72,4 +72,8 @@ public class RecordAttendanceFormController {
     public void btnIn_OnAction(ActionEvent event) {
         recordAttendance(true);
     }
+
+    public void btnOut_OnAction(ActionEvent event) {
+        recordAttendance(false);
+    }
 }
