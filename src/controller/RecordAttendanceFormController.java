@@ -5,18 +5,21 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import security.SecurityContextHolder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Date;
 
 public class RecordAttendanceFormController {
@@ -76,4 +79,20 @@ public class RecordAttendanceFormController {
     public void btnOut_OnAction(ActionEvent event) {
         recordAttendance(false);
     }
+
+    private void recordAttendance(boolean in) {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        /* Check last record status */
+        try {
+            String lastStatus = null;
+            PreparedStatement stm = connection.
+                    prepareStatement("SELECT status, date FROM attendance WHERE student_id=? ORDER BY date DESC LIMIT 1");
+            stm.setString(1, student.id);
+            ResultSet rst = stm.executeQuery();
+            if (rst.next()) {
+                lastStatus = rst.getString("status");
+            }
+
+        }
 }
