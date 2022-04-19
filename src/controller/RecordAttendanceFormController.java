@@ -115,5 +115,22 @@ public class RecordAttendanceFormController {
                 if (!record.getValue()) return;
             }
 
-        }
+            PreparedStatement stm2 = connection.
+                    prepareStatement("INSERT INTO attendance (date, status, student_id, username) VALUES (NOW(),?,?,?)");
+            stm2.setString(1, in ? "IN" : "OUT");
+            stm2.setString(2, student.id);
+            stm2.setString(3, SecurityContextHolder.getPrincipal().getUsername());
+            if (stm2.executeUpdate() != 1) {
+                throw new RuntimeException("Failed to add the attendance");
+            }
+            //new Thread(() -> sendSMS(in)).start();
+            txtStudentID.clear();
+            txtStudentID_OnAction(null);
+            updateLatestAttendance();
+
+        } catch (Throwable e) {
+            e.printStackTrace();
+            new DepAlert(Alert.AlertType.ERROR, "Failed to save the attendance, try again",
+                    "Failure", "Error", ButtonType.OK).show();
+        }}
 }
