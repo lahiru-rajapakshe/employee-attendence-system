@@ -23,4 +23,8 @@ public class ImportDBFormController {
             btnOK.setDisable(txtBrowse.getText().isEmpty() && newValue);
         });
     }
+
+    public void initFileProperty(SimpleObjectProperty<File> fileProperty) {
+        this.fileProperty = fileProperty;
+    }
 }
