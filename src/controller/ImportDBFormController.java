@@ -7,6 +7,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 
@@ -39,5 +40,12 @@ public class ImportDBFormController {
         File file = fileChooser.showOpenDialog(btnOK.getScene().getWindow());
         txtBrowse.setText(file != null ? file.getAbsolutePath() : "");
         fileProperty.setValue(file);
+    }
+
+    public void btnOK_OnAction(ActionEvent event) {
+        if (rdoFirstTime.isSelected()){
+            fileProperty.setValue(null);
+        }
+        ((Stage)(btnOK.getScene().getWindow())).close();
     }
 }
