@@ -191,6 +191,30 @@ public class RecordAttendanceFormController {
             return;
         }
 
+        try {
+            stmSearchStudent.setString(1, txtStudentID.getText().trim());
+            ResultSet rst = stmSearchStudent.executeQuery();
 
+            if (rst.next()) {
+                lblStudentName.setText(rst.getString("name").toUpperCase());
+                InputStream is = rst.getBlob("picture").getBinaryStream();
+                imgProfile.setImage(new Image(is));
+                btnIn.setDisable(false);
+                btnOut.setDisable(false);
+                student = new Student(txtStudentID.getText(), rst.getString("name"),
+                        rst.getString("guardian_contact"));
+                txtStudentID.selectAll();
+            } else {
+                new RJAlert(Alert.AlertType.ERROR, "Invalid Student ID, Try again!", "Oops!", "Error").show();
+                txtStudentID.selectAll();
+                student = null;
+                txtStudentID.requestFocus();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new RJAlert(Alert.AlertType.WARNING, "Something went wrong. Please try again!", "Connection Failure", "Error").show();
+            txtStudentID.selectAll();
+            txtStudentID.requestFocus();
+        }
     }
 }
