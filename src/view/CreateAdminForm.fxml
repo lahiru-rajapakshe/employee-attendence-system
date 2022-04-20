@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="443.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAdminFormController">
+   <children>
+      <ImageView fitHeight="117.0" fitWidth="117.0" layoutX="34.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="219.0" layoutY="34.0" text="Welcome to Student Attendance System">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="194.0" layoutY="64.0" prefHeight="33.0" prefWidth="376.0" text="Hey there! Let's create an admin account first to get started with the system" textAlignment="CENTER" wrapText="true" />
+      <VBox layoutX="219.0" layoutY="117.0" prefHeight="200.0" prefWidth="326.0" spacing="10.0">
+         <children>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Enter your name" />
+            <TextField fx:id="txtName" alignment="CENTER" promptText="Your name" />
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Enter the username" />
+            <TextField fx:id="txtUserName" alignment="CENTER" layoutX="10.0" layoutY="36.0" promptText="Your username" />
+            <Label alignment="CENTER" layoutX="10.0" layoutY="72.0" maxWidth="1.7976931348623157E308" text="Enter the password" />
+            <PasswordField fx:id="txtPassword" alignment="CENTER" promptText="Your password" />
+            <FlowPane alignment="CENTER" hgap="5.0">
+               <children>
+                  <Rectangle fx:id="rect1" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="8.0" stroke="#e4e4e4" strokeType="INSIDE" width="39.0" />
+                  <Rectangle fx:id="rect2" arcHeight="5.0" arcWidth="5.0" fill="#ffef21" height="8.0" layoutX="154.0" layoutY="10.0" stroke="#e4e4e4" strokeType="INSIDE" width="39.0" />
+                  <Rectangle fx:id="rect3" arcHeight="5.0" arcWidth="5.0" fill="#21ff56" height="8.0" layoutX="173.0" layoutY="10.0" stroke="#e4e4e4" strokeType="INSIDE" width="39.0" />
+               </children>
+            </FlowPane>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="134.0" maxWidth="1.7976931348623157E308" text="Enter the confirm password" />
+            <PasswordField fx:id="txtConfirmPassword" alignment="CENTER" layoutX="10.0" layoutY="160.0" promptText="Confirm your password" />
+            <FlowPane alignment="CENTER" vgap="10.0">
+               <children>
+                  <Button fx:id="btnCreateAccount" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#btnCreateAccount_OnAction" text="Create Account" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </FlowPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
