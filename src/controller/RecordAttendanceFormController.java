@@ -217,4 +217,16 @@ public class RecordAttendanceFormController {
             txtStudentID.requestFocus();
         }
     }
+
+    private static class Student {
+        String id;
+        String name;
+        String guardianContact;
+
+        public Student(String id, String name, String guardianContact) {
+            this.id = id;
+            this.name = name;
+            this.guardianContact = guardianContact;
+        }
+    }
 }
