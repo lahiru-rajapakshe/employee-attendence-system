@@ -20,9 +20,7 @@ import security.SecurityContextHolder;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -155,6 +153,27 @@ public class RecordAttendanceFormController {
             connection.getOutputStream().write(payload.getBytes());
             connection.getOutputStream().close();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateLatestAttendance(){
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement stm = connection.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT s.id, s.name, a.status, a.date FROM student s INNER JOIN attendance a on s.id = a.student_id\n" +
+                    "ORDER BY date DESC LIMIT 1");
+            if (rst.next()){
+                lblID.setText("ID: " + rst.getString("id"));
+                lblName.setText("Name: " + rst.getString("name"));
+                lblStatus.setText("Date: " + rst.getString("date") + " - " + rst.getString("status"));
+            }else{
+                /* Fresh start */
+                lblID.setText("ID: -");
+                lblName.setText("Name: -");
+                lblStatus.setText("Date: -");
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
