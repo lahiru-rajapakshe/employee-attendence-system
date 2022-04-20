@@ -1,0 +1,28 @@
+*{
+    -fx-font-family: Ubuntu !important;
+}
+
+#root{
+    -fx-background-color: white !important;
+}
+
+.button{
+    -fx-cursor: hand;
+}
+
+#lblDescription{
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-background-color: rgba(255, 165, 0, 0.81);
+    -fx-background-radius: 20px;
+}
+
+#btnProceed{
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+#btnCallPolice{
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
