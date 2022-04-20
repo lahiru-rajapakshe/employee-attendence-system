@@ -10,14 +10,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import security.SecurityContextHolder;
+import util.RJAlert;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.*;
@@ -176,5 +179,18 @@ public class RecordAttendanceFormController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void txtStudentID_OnAction(ActionEvent event) {
+        btnIn.setDisable(true);
+        btnOut.setDisable(true);
+        lblStudentName.setText("Please enter/scan the student ID to proceed");
+        imgProfile.setImage(new Image("/view/assets/qr-code.png"));
+
+        if (txtStudentID.getText().trim().isEmpty()) {
+            return;
+        }
+
+
     }
 }
