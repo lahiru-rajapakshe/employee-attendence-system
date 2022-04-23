@@ -69,4 +69,9 @@ public class AlertFormController {
         ((Stage)(btnProceed.getScene().getWindow())).close();
     }
 
-
+    public void btnCallPolice_OnAction(ActionEvent actionEvent) {
+        player.stop();
+        player.dispose();
+        ((Stage)(btnProceed.getScene().getWindow())).close();
+    }
+}
