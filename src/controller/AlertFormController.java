@@ -30,5 +30,16 @@ public class AlertFormController {
     private SimpleBooleanProperty record;
     private MediaPlayer player;
 
+    public void initialize() throws URISyntaxException {
+        ScaleTransition st = new ScaleTransition(Duration.millis(400), imgDanger);
+        st.setFromX(0.8);
+        st.setFromY(0.8);
+        st.setToX(1.2);
+        st.setToY(1.2);
+        st.setCycleCount(-1);
+        st.play();
+
+        playSiren();
+    }
 
 }
