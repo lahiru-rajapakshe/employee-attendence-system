@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="root" prefHeight="400.0" prefWidth="486.0" stylesheets="@style/AlterFormStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlertFormController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="486.0" opacity="0.29" pickOnBounds="true">
+         <image>
+            <Image url="@assets/danger-bg/grunge-danger-background.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgDanger" fitHeight="114.0" fitWidth="114.0" layoutX="25.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/danger.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblAlert" layoutX="205.0" layoutY="28.0" text="ALERT!" textFill="RED">
+         <font>
+            <Font size="62.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDescription" alignment="CENTER" contentDisplay="CENTER" layoutX="144.0" layoutY="101.0" prefHeight="55.0" prefWidth="322.0" text="Something is horribely wrong! Please double check before proceeding." textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding></Label>
+      <VBox layoutX="22.0" layoutY="196.0" prefHeight="193.0" prefWidth="443.0" spacing="10.0">
+         <children>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Last Recorded Details">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="lblId" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="ID: 2021/DEP08/I001">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblName" alignment="CENTER" layoutX="10.0" layoutY="40.0" maxWidth="1.7976931348623157E308" text="NAME: THILINA UPENDRA">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" alignment="CENTER" layoutX="10.0" layoutY="70.0" maxWidth="1.7976931348623157E308" text="2022-01-25 12:15 AM - IN">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Do you want to proceed?">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Label>
+            <FlowPane alignment="CENTER" hgap="10.0">
+               <children>
+                  <Button fx:id="btnProceed" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#btnProceed_OnAction" prefHeight="32.0" prefWidth="84.0" text="Proceed" textAlignment="CENTER" />
+                  <Button fx:id="btnCallPolice" alignment="CENTER" cancelButton="true" mnemonicParsing="false" onAction="#btnCallPolice_OnAction" prefHeight="32.0" prefWidth="91.0" text="Close" textAlignment="CENTER" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </FlowPane>
+         </children>
+      </VBox>
+      <Line endX="330.0" layoutX="131.0" layoutY="184.0" startX="-100.0" />
+   </children>
+</AnchorPane>
