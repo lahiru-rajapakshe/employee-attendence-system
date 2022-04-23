@@ -55,4 +55,11 @@ public class AlertFormController {
         player.play();
     }
 
+    public void initData(String studentId, String studentName, LocalDateTime date, boolean in, SimpleBooleanProperty record){
+        lblId.setText("ID: " + studentId.toUpperCase());
+        lblName.setText("NAME: " + studentName.toUpperCase());
+        lblDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")) + " - " + (in? "IN" : "OUT"));
+        this.record = record;
+    }
+
 }
