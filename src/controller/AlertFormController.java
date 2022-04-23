@@ -62,4 +62,11 @@ public class AlertFormController {
         this.record = record;
     }
 
-}
+    public void btnProceed_OnAction(ActionEvent actionEvent) {
+        record.setValue(true);
+        player.stop();
+        player.dispose();
+        ((Stage)(btnProceed.getScene().getWindow())).close();
+    }
+
+
