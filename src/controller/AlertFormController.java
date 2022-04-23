@@ -42,4 +42,17 @@ public class AlertFormController {
         playSiren();
     }
 
+    private void playSiren() throws URISyntaxException {
+        Media media = new Media(this.getClass().getResource("/assets/siren.wav").toURI().toString());
+        player = new MediaPlayer(media);
+        Platform.runLater(()->{
+            lblId.getScene().getWindow().setOnCloseRequest(event -> {
+                System.out.println("Stopped..!");
+                player.stop();
+                player.dispose();
+            });
+        });
+        player.play();
+    }
+
 }
