@@ -21,7 +21,31 @@ public class BackupAndRestoreFormController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Backup files (*.dep8bak)", "*.dep8bak"));
         File file = fileChooser.showSaveDialog(btnBackup.getScene().getWindow());
 
+        if (file != null) {
+            ProcessBuilder mysqlDumpProcessBuilder = new ProcessBuilder("mysqldump",
+                    "-h", "localhost",
+                    "--port", "3306",
+                    "-u", "root",
+                    "-pmysql",
+                    "--add-drop-database",
+                    "--databases", "dep8_student_attendance");
 
+            mysqlDumpProcessBuilder.redirectOutput(System.getProperty("os.name").equalsIgnoreCase("windows") || file.getAbsolutePath().endsWith(".dep8bak") ? file : new File(file.getAbsolutePath() + ".dep8bak"));
+            try {
+                Process mysqlDump = mysqlDumpProcessBuilder.start();
+                int exitCode = mysqlDump.waitFor();
+
+                if (exitCode == 0) {
+                    new RJAlert(Alert.AlertType.INFORMATION, "Backup process succeeded",
+                            "Success", ButtonType.OK).show();
+                } else {
+                    new RJAlert(Alert.AlertType.ERROR, "Backup process failed, try again!",
+                            "Backup failed", "Error", ButtonType.OK).show();
+                }
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
