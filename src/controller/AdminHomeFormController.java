@@ -47,7 +47,7 @@ public class AdminHomeFormController {
             }
         });
 
-
+        lblGreeting.setText("Welcome " + SecurityContextHolder.getPrincipal().getName() + "!");
     }
 
 }
