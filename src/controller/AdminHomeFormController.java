@@ -50,4 +50,8 @@ public class AdminHomeFormController {
         lblGreeting.setText("Welcome " + SecurityContextHolder.getPrincipal().getName() + "!");
     }
 
+    private void displayHoveringText(Button button){
+        lblHover.setText(button.getAccessibleText());
+    }
+
 }
