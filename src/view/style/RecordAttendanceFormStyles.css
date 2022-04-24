@@ -1,0 +1,19 @@
+.button{
+    -fx-cursor: hand;
+}
+
+#btnIn:hover{
+    -fx-background-color: #00bd00 !important;
+}
+
+#btnIn:pressed{
+    -fx-background-color: #005900 !important;
+}
+
+#btnOut:hover{
+    -fx-background-color: #ffc14b !important;
+}
+
+#btnOut:pressed{
+    -fx-background-color: #f18100 !important;
+}
