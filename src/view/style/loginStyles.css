@@ -1,0 +1,32 @@
+#btnSignIn {
+    -fx-background-color:  linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+    /*-fx-pref-height: 48px;*/
+    -fx-text-fill: white;
+    -fx-background-radius: 5em;
+    /*transition:  0.5s ease*/
+    -fx-cursor: hand;
+}
+#btnSignIn:hover {
+    -fx-background-color:  linear-gradient(to right, #33ccff 0%, #ff99cc 80%);
+
+
+    /*transition:  0.5s ease*/
+}
+#btnClose{
+    -fx-cursor: hand;
+
+}
+#closeImg{
+    -fx-background-color:   #0097ff  ;
+}
+.payload {
+    -fx-hgap: 20px;
+    -fx-padding: 40px;
+
+    -fx-background-color: #2969c0;
+
+    -fx-border-radius: 50px;
+    -fx-border-width: 5px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
