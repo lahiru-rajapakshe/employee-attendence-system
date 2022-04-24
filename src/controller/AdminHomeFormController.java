@@ -96,4 +96,20 @@ public class AdminHomeFormController {
         ((Stage)(btnSignOut.getScene().getWindow())).close();
     }
 
+    public void btnBackupRestore_OnAction(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/BackupAndRestoreForm.fxml"));
+        Scene backupScene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Emloyee Attendance System: Backup/Restore");
+        stage.setScene(backupScene);
+        stage.setResizable(false);
+        stage.initOwner(btnRecordAttendance.getScene().getWindow());
+        stage.show();
+
+        Platform.runLater(()->{
+            stage.sizeToScene();
+            stage.centerOnScreen();
+        });
+    }
+
 }
