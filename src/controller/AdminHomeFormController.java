@@ -78,4 +78,22 @@ public class AdminHomeFormController {
         });
     }
 
+    public void btnSignOut_OnAction(ActionEvent event) throws IOException {
+        SecurityContextHolder.clear();
+        AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"));
+        Scene loginScene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(loginScene);
+        stage.setTitle("Employee Attendance System: Log In");
+        stage.setResizable(false);
+        stage.show();
+
+        Platform.runLater(()->{
+            stage.sizeToScene();
+            stage.centerOnScreen();
+        });
+
+        ((Stage)(btnSignOut.getScene().getWindow())).close();
+    }
+
 }
