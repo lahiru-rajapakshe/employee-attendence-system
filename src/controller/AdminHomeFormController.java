@@ -112,4 +112,19 @@ public class AdminHomeFormController {
         });
     }
 
+    public void btnManageUsers_OnAction(ActionEvent event) {
+
+    }
+
+
+    public void btnUserProfile_OnAction(ActionEvent event) {
+
+    }
+
+
+    public void btnViewReports_OnAction(ActionEvent event) {
+
+    }
+
+
 }
