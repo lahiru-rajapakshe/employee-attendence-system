@@ -33,6 +33,21 @@ public class AdminHomeFormController {
         btnBackupRestore.setOnMouseExited(event -> lblHover.setText(initialText));
         btnSignOut.setOnMouseExited(event -> lblHover.setText(initialText));
 
+        root.setOnKeyReleased(event -> {
+            switch(event.getCode()){
+                case F1:
+                    btnRecordAttendance.fire();
+                    break;
+                case F12:
+                    btnSignOut.fire();
+                    break;
+                case F5:
+                    btnBackupRestore.fire();
+                    break;
+            }
+        });
 
+
+    }
 
 }
