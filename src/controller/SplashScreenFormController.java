@@ -69,7 +69,7 @@ public class SplashScreenFormController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.sizeToScene();
-            stage.setTitle("Student Attendance System: First Time Boot");
+            stage.setTitle("Employee Attendance System: First Time Boot");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(lblStatus.getScene().getWindow());
@@ -138,7 +138,7 @@ public class SplashScreenFormController {
             AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/CreateAdminForm.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle("Student Attendance System: Create Admin");
+            stage.setTitle("Employee Attendance System: Create Admin");
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.sizeToScene();

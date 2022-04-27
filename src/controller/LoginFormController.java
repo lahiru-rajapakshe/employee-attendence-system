@@ -66,7 +66,7 @@ public class LoginFormController {
                 Stage primaryStage = (Stage)(btnSignIn.getScene().getWindow());
                 homeScene.getStylesheets().add("view/style/userHomeStyles.css");
                 primaryStage.setScene(homeScene);
-                primaryStage.setTitle("Student Attendance System: Home");
+                primaryStage.setTitle("Employee Attendance System: Home");
                 Platform.runLater(()-> {
                     primaryStage.sizeToScene();
                     primaryStage.centerOnScreen();

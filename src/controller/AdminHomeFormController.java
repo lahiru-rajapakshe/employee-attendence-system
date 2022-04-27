@@ -66,7 +66,7 @@ public class AdminHomeFormController {
         AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/RecordAttendanceForm.fxml"));
         Scene attendanceScene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("Student Attendance System: Record Attendance");
+        stage.setTitle("Employee Attendance System: Record Attendance");
         stage.setScene(attendanceScene);
         stage.setResizable(false);
         stage.initOwner(btnRecordAttendance.getScene().getWindow());

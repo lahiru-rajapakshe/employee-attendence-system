@@ -184,7 +184,7 @@ public class RecordAttendanceFormController {
     public void txtStudentID_OnAction(ActionEvent event) {
         btnIn.setDisable(true);
         btnOut.setDisable(true);
-        lblStudentName.setText("Please enter/scan the student ID to proceed");
+        lblStudentName.setText("Please enter/scan the Employee ID to proceed");
         imgProfile.setImage(new Image("/view/assets/qr-code.png"));
 
         if (txtStudentID.getText().trim().isEmpty()) {
@@ -205,7 +205,7 @@ public class RecordAttendanceFormController {
                         rst.getString("guardian_contact"));
                 txtStudentID.selectAll();
             } else {
-                new RJAlert(Alert.AlertType.ERROR, "Invalid Student ID, Try again!", "Oops!", "Error").show();
+                new RJAlert(Alert.AlertType.ERROR, "Invalid Employee ID, Try again!", "Oops!", "Error").show();
                 txtStudentID.selectAll();
                 student = null;
                 txtStudentID.requestFocus();
