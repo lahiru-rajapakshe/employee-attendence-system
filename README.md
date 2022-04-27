@@ -9,8 +9,9 @@ This repository is where i developed the EAs as a inidividual project.This sourc
 ## Screenshots
 
 ![e1](https://user-images.githubusercontent.com/66423576/163353123-070ed55f-c059-41e1-a46d-778b9c299a7f.png)
-![Screenshot from 2022-04-27 22-29-44](https://user-images.githubusercontent.com/66423576/165579925-1216963b-1c25-4b9e-9a98-abf112e0d05d.png)
-![Screenshot from 2022-04-27 22-29-54](https://user-images.githubusercontent.com/66423576/165579935-665bdf38-1763-4e2d-8382-9def5291892a.png)
+![Screenshot from 2022-04-27 22-35-31](https://user-images.githubusercontent.com/66423576/165580983-70f56dd8-2ab2-402c-acc1-6aca55c5127a.png)
+![Screenshot from 2022-04-27 22-35-38](https://user-images.githubusercontent.com/66423576/165580997-d728c42b-ee37-47ec-8d94-5b2a22f50c62.png)
+
 
 
 # Features
