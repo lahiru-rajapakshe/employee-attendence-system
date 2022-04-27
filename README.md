@@ -28,8 +28,8 @@ This repository is where i developed the EAs as a inidividual project.This sourc
 
 ## How to use this repository?
     1.First clone the repository
-    2.Once cloned, Run the index file
-    3.Search anything !
+    2.Once cloned, Run the inteliJADEA and then ipen this project.
+    3.Run !
 
 ## Feedback
     Ask a question on Stackoverflow
