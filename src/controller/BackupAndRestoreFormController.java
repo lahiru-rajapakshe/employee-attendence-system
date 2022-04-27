@@ -18,7 +18,7 @@ public class BackupAndRestoreFormController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose backup location");
         fileChooser.setInitialFileName(LocalDate.now() + "-sas-bak");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Backup files (*.dep8bak)", "*.dep8bak"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Backup files (*.easBack)", "*.easBack"));
         File file = fileChooser.showSaveDialog(btnBackup.getScene().getWindow());
 
         if (file != null) {
@@ -28,9 +28,9 @@ public class BackupAndRestoreFormController {
                     "-u", "root",
                     "-pmysql",
                     "--add-drop-database",
-                    "--databases", "dep8_student_attendance");
+                    "--databases", "easBack_employee_attendance");
 
-            mysqlDumpProcessBuilder.redirectOutput(System.getProperty("os.name").equalsIgnoreCase("windows") || file.getAbsolutePath().endsWith(".dep8bak") ? file : new File(file.getAbsolutePath() + ".dep8bak"));
+            mysqlDumpProcessBuilder.redirectOutput(System.getProperty("os.name").equalsIgnoreCase("windows") || file.getAbsolutePath().endsWith(".easBack") ? file : new File(file.getAbsolutePath() + ".easBack"));
             try {
                 Process mysqlDump = mysqlDumpProcessBuilder.start();
                 int exitCode = mysqlDump.waitFor();

@@ -35,7 +35,7 @@ public class ImportDBFormController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a backup file");
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Backup file", "*.dep8backup")
+                new FileChooser.ExtensionFilter("Backup file", "*.easBack")
         );
         File file = fileChooser.showOpenDialog(btnOK.getScene().getWindow());
         txtBrowse.setText(file != null ? file.getAbsolutePath() : "");

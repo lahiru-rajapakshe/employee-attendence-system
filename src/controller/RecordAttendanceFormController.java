@@ -58,7 +58,7 @@ public class RecordAttendanceFormController {
         try {
             stmSearchStudent = connection.prepareStatement("SELECT * FROM student WHERE id=?");
         } catch (Exception e) {
-            new DepAlert(Alert.AlertType.WARNING, "Failed to connect with DB", "Connection Error", "Error").show();
+            new RJAlert(Alert.AlertType.WARNING, "Failed to connect with DB", "Connection Error", "Error").show();
             e.printStackTrace();
             Platform.runLater(() -> {
                 ((Stage) (btnIn.getScene().getWindow())).close();
@@ -135,7 +135,7 @@ public class RecordAttendanceFormController {
 
         } catch (Throwable e) {
             e.printStackTrace();
-            new DepAlert(Alert.AlertType.ERROR, "Failed to save the attendance, try again",
+            new RJAlert(Alert.AlertType.ERROR, "Failed to save the attendance, try again",
                     "Failure", "Error", ButtonType.OK).show();
         }}
 
