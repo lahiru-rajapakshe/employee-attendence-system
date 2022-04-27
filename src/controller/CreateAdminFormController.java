@@ -73,4 +73,42 @@ public class CreateAdminFormController {
             e.printStackTrace();
         }
     }
+
+    private boolean isValidated() {
+        String name = txtName.getText().trim();
+        String username = txtUserName.getText().trim();
+        String password = txtPassword.getText().trim();
+        String confirmPassword = txtConfirmPassword.getText().trim();
+
+        if (!name.matches("[A-Za-z ]+")) {
+            new DepAlert(Alert.AlertType.ERROR, "Please enter valid name", "Validation Error").show();
+            txtName.selectAll();
+            txtName.requestFocus();
+            return false;
+        } else if (username.length() < 4) {
+            new DepAlert(Alert.AlertType.ERROR, "Username should be at least 4 characters long", "Validation Error").show();
+            txtUserName.selectAll();
+            txtUserName.requestFocus();
+            return false;
+        } else if (!username.matches("[A-Za-z0-9]+")) {
+            new DepAlert(Alert.AlertType.ERROR, "Username can contain only characters and digits", "Validation Error").show();
+            txtUserName.selectAll();
+            txtUserName.requestFocus();
+            return false;
+        } else if (password.length() < 4) {
+            new DepAlert(Alert.AlertType.ERROR, "Password should be at least 4 characters long", "Validation Error").show();
+            txtPassword.selectAll();
+            txtPassword.requestFocus();
+            return false;
+        } else if (!password.equals(confirmPassword)) {
+            new DepAlert(Alert.AlertType.ERROR, "Password mismatch", "Validation Error").show();
+            txtConfirmPassword.selectAll();
+            txtConfirmPassword.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+
+
 }
