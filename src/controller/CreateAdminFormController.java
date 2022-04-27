@@ -57,7 +57,16 @@ public class CreateAdminFormController {
 
             new RJAlert(Alert.AlertType.INFORMATION, "Account has been created successfully", "Account Created", "Success").showAndWait();
 
-
+            /* Let's redirect to the Login Form */
+            AnchorPane root = FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"));
+            Scene loginScene = new Scene(root);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(loginScene);
+            primaryStage.setTitle("Employee Attendance System: Log In");
+            primaryStage.setResizable(false);
+            primaryStage.centerOnScreen();
+            primaryStage.show();
+            Platform.runLater(() -> primaryStage.sizeToScene());
 
             ((Stage)(btnCreateAccount.getScene().getWindow())).close();
         } catch (SQLException | IOException e) {
