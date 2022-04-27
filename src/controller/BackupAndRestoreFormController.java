@@ -50,35 +50,7 @@ public class BackupAndRestoreFormController {
 
 
     public void btnRestore_OnAction(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose a backup file to restore");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Backup files (*.dep8bak)", "*.dep8bak"));
-        File file = fileChooser.showOpenDialog(btnBackup.getScene().getWindow());
 
-        if (file != null){
-            /* mysql -h localhost --port 3306 -u root -pmysql < backup-file-path */
-            ProcessBuilder mysqlProcessBuilder = new ProcessBuilder("mysql",
-                    "-h", "localhost",
-                    "--port", "3306",
-                    "-u", "root",
-                    "-pmysql");
-            mysqlProcessBuilder.redirectInput(file);
-            try {
-                Process mysql = mysqlProcessBuilder.start();
-                int exitCode = mysql.waitFor();
-
-                if (exitCode == 0) {
-                    new RJAlert(Alert.AlertType.INFORMATION, "Restore process succeeded",
-                            "Success", ButtonType.OK).show();
-                } else {
-                    new RJAlert(Alert.AlertType.ERROR, "Restore process failed, try again!",
-                            "Restore failed", "Error", ButtonType.OK).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
         }
     }
