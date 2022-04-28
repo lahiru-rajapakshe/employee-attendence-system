@@ -23,7 +23,8 @@ This repository is where i developed the EAs as a inidividual project.This sourc
     5.View Reports
     6.Search members
     7.Find history
-    8.Security
+    8.Print data
+    9.Security
     
 
 ## How to use this repository?
